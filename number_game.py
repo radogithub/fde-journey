@@ -1,5 +1,8 @@
 # Number Guessing game in Python
-win_num = 9
+import random
+
+win_num = random.randint(1, 100)
+attempts = 0
 
 while True:
     try:
@@ -8,10 +11,14 @@ while True:
         print("❌ Invalid input! Numbers only, please.")
         continue  # Ask again!
 
+    attempts += 1
+
     if guessed_num == win_num:
-        print("You Win!")
+        print(f"🎉 You Win! in {attempts} attempts")
         break
     elif guessed_num < 1 or guessed_num > 100:
         print("Not a valid Number, please enter number between 1 to 100")
-    else:
-        print("Wrong Guess! Try Again")
+    elif guessed_num > win_num:
+        print("Too High! Try lower number")
+    elif guessed_num < win_num:
+        print("Too Low! Try higher number")
